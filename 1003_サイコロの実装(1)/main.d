@@ -20,6 +20,7 @@ class StandardIOProvider : IOProvider
 
   void output(string str)
   {
+    writeln(str);
   }
 }
 
@@ -36,7 +37,7 @@ class TestIOProvider : IOProvider
   }
 }
 
-class Program
+abstract class Base
 {
   private IOProvider io;
 
@@ -52,6 +53,16 @@ class Program
       this.io.output(str);
     }
   }
+  public
+  {
+    void main()
+    {
+    }
+  }
+}
+
+final class Program : Base
+{
 
 public:
   this(IOProvider provider) nothrow
@@ -59,13 +70,14 @@ public:
     this.io = provider;
   }
 
-  void main()
+  override void main()
   {
     const string input = this.read();
     const int n = input.to!int;
 
     int[] l1 = map!(x => x % 6 + 1)(iota(1, n + 1)).array;
-    ulong[] l2 = map!(x => filter!(y => y == x)(l1).array.length)(iota(1, 7)).array;
+    ulong[] l2 = map!(x => filter!(y => y == x)(l1).array.length)(iota(1, 7))
+      .array;
 
     const bool result = all!(x => x == l2[0])(l2);
 
