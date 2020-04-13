@@ -5,7 +5,7 @@ protocol IOProvider {
   func output(_ str: String) -> Void
 }
 
-class StandardIOProvider: IOProvider {
+final class StandardIOProvider: IOProvider {
   func input() -> String {
     return readLine()!
   }
@@ -15,7 +15,7 @@ class StandardIOProvider: IOProvider {
   }
 }
 
-class TestIOProvider: IOProvider {
+final class TestIOProvider: IOProvider {
   func input() -> String {
     return "6"
   }
@@ -54,7 +54,7 @@ class Base {
 }
 
 
-class Program: Base {
+final class Program: Base {
 
   public override func main() {
     let input: String = self.read()

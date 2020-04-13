@@ -5,7 +5,7 @@ trait IOProvider {
 }
 
 
-class StdIOProvider extends IOProvider {
+final class StdIOProvider extends IOProvider {
   def read(): String = {
     return io.StdIn.readLine()
   }
@@ -15,7 +15,7 @@ class StdIOProvider extends IOProvider {
   }
 }
 
-class TestIOProvider extends IOProvider {
+final class TestIOProvider extends IOProvider {
   def read(): String = {
     return "6"
   }
@@ -41,7 +41,7 @@ abstract class Base(provider: IOProvider) {
 }
 
 
-class Program(provider: IOProvider) extends Base(provider) {
+final class Program(provider: IOProvider) extends Base(provider) {
   override def main(): Unit = {
     val input: String = this.read()
 
